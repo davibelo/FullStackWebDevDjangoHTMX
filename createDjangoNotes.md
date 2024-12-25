@@ -86,4 +86,28 @@ To consult the order in PATH these commands can be used:
   - wsgi: synchronous entry points
 
 - Run server with:
-  poetry run python .\manage.py runserver
+
+        poetry run python .\manage.py runserver
+
+- Run migrations, with:
+
+        poetry run python .\manage.py migrate
+
+This command applies all built-in migrations and any migrations for your installed apps (like auth, sessions, etc.).
+
+Even if your project has no migrations folder (e.g., in your custom apps), Django’s core apps (auth, admin, contenttypes, etc.) come with pre-made migrations.
+
+So, migrate will set up database tables for Django's built-in features (like users, groups, and permissions).
+
+Initialize your database for the first time.
+If you're working on a fresh project, this step ensures the admin system is functional.
+
+- Create a superuser, with:
+
+        poetry run python .\manage.py createsuperuser
+
+- Run server, with:
+
+        poetry run python .\manage.py runserver
+
+- Go to server url on browser and log on admin panel of django
