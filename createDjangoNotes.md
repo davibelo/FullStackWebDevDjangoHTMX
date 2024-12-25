@@ -76,3 +76,14 @@ To consult the order in PATH these commands can be used:
 - Run command to initialize a django project
 
         poetry run django-admin startproject djangoproj .
+
+- This will create some importante files:
+
+  - manage.py: Used to run django commands
+  - settings.py: Define all project configuration
+  - urls: Define all endpoints/ routes
+  - asgi: asynchronous entry points
+  - wsgi: synchronous entry points
+
+- Run server with:
+  poetry run python .\manage.py runserver
