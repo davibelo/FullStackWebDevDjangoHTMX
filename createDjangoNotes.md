@@ -111,3 +111,7 @@ If you're working on a fresh project, this step ensures the admin system is func
         poetry run python .\manage.py runserver
 
 - Go to server url/admin (http://127.0.0.1:8000/admin) on browser and log on admin panel of django
+
+- Create a django app, with:
+
+        poetry run python .\manage.py startapp app
