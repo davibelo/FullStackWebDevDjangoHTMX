@@ -184,3 +184,4 @@ you can start with models
 
 - Restart server with proper command and go to admin panel
   You should be able to view your database schema and add/change data on database
+  You may also see Authentication/User information
