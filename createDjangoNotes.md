@@ -165,6 +165,15 @@ you can start with models
 
 - Add your app in INSTALLED_APPS array on settings.py
 - After creating models in models.py, prepare migrations file, with:
-  poetry run python .\manage.py makemigrations
+
+        poetry run python .\manage.py makemigrations
+
   It create a migration file to initialize the database
   It will create a database file according to DATABASE in settings.py
+
+- Apply migration file with:
+
+        poetry run python .\manage.py migrate
+
+  Remember that it will create a new database file,
+  if it already exists, delete it first
