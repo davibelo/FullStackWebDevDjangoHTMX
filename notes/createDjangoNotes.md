@@ -128,27 +128,15 @@ It create some files:
 
 ## Django App flow
 
-User <br>
-|
-V
-Django Project (receive request)
-|
-V
+User -->
+Django Project (receive request) -->
 urls.py on project folder
 urls.py on app folder
-(it looks for URL patterns)
-|
-V
+(it looks for URL patterns) -->
 views.py (passes the request to corresponding functions)
-| A A
-| | |
-| | |
-| | V
-| | models.py (database interaction)
-| V
-| template.html (renders)
-V
-User (send response to the user)
+<--> models.py (database interaction)
+<--> template.html (renders)
+--> User (send response to the user)
 
 In MVC Model/View/Controller terminology
 Model = models.py
@@ -157,7 +145,7 @@ Controller = views.py
 
 A good order to write the app is:
 templates --> models --> views
-UI -------------db---- navigation
+UI --> db --> navigation
 
 if you already know the data you're going to have,
 you can start with models
