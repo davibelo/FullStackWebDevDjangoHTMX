@@ -115,3 +115,48 @@ If you're working on a fresh project, this step ensures the admin system is func
 - Create a django app, with:
 
         poetry run python .\manage.py startapp app
+
+It create some files:
+
+- admin.py to link models with admin panel
+- models.py to contain models that represent rows of database
+- app.py to configure the app and import from django project
+- tests.py for writing tests for the application
+- views.py for the writting application endpoints or logic for various urls
+- migrations folder to store database migrations if application makes ant database changes
+
+## Django App flow
+
+User
+|
+V
+Django Project (receive request)
+|
+V
+urls.py on project folder
+urls.py on app folder
+(it looks for URL patterns)
+|
+V
+views.py (passes the request to corresponding functions)
+| A A
+| | |
+| | |
+| | V
+| | models.py (database interaction)
+| V
+| template.html (renders)
+V
+User (send response to the user)
+
+In MVC Model/View/Controller terminology
+Model = models.py
+View = template.html
+Controller = views.py
+
+A good order to write the app is:
+templates --> models --> views
+UI -------------db---- navigation
+
+if you already know the data you're going to have,
+you can start with models
