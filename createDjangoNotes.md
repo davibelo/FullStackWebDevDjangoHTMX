@@ -177,3 +177,10 @@ you can start with models
 
   Remember that it will create a new database file,
   if it already exists, delete it first
+
+- Database will be recreated, so it is need to create super user, with:
+
+        poetry run python .\manage.py createsuperuser
+
+- Restart server with proper command and go to admin panel
+  You should be able to view your database schema and add/change data on database
