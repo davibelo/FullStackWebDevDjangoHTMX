@@ -117,18 +117,18 @@ If you're working on a fresh project, this step ensures the admin system is func
 
 It create some files:
 
- - admin.py to link models with admin panel
- - models.py to contain models that represent rows of database
- - app.py to configure the app and import from django project
- - tests.py for writing tests for the application
- - views.py for the writting application endpoints or logic for various urls
- - migrations folder to store database migrations if application makes ant database changes
+    - admin.py to link models with admin panel
+    - models.py to contain models that represent rows of database
+    - app.py to configure the app and import from django project
+    - tests.py for writing tests for the application
+    - views.py for the writting application endpoints or logic for various urls
+    - migrations folder to store database migrations if application makes ant database changes
 
 - Add your app in INSTALLED_APPS array on settings.py
 
 ## Django App flow
 
-User
+User <br>
 |
 V
 Django Project (receive request)
