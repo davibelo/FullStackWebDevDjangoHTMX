@@ -14,9 +14,9 @@ class UserProfile(AbstractUser):
     pass
 
 
-class Article(models.model):
+class Article(models.Model):
     title = models.CharField(max_length=100)
-    content = models.TextField(black=True, default="")
+    content = models.TextField(blank=True, default="")
     word_count = models.IntegerField()
     twitter_post = models.TextField(blank=True, default="")
     status = models.CharField(

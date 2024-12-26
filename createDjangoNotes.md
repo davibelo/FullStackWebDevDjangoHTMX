@@ -160,3 +160,11 @@ UI -------------db---- navigation
 
 if you already know the data you're going to have,
 you can start with models
+
+## Other observations
+
+- Add your app in INSTALLED_APPS array on settings.py
+- After creating models in models.py, prepare migrations file, with:
+  poetry run python .\manage.py makemigrations
+  It create a migration file to initialize the database
+  It will create a database file according to DATABASE in settings.py
