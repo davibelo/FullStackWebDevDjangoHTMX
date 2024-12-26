@@ -99,7 +99,6 @@ Even if your project has no migrations folder (e.g., in your custom apps), Djang
 
 So, migrate will set up database tables for Django's built-in features (like users, groups, and permissions).
 
-Initialize your database for the first time.
 If you're working on a fresh project, this step ensures the admin system is functional.
 
 - Create a superuser, with:
