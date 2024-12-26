@@ -1,4 +1,4 @@
-# Initializing a django project
+# Making a new django project
 
 ## About pyenv-win tool
 
@@ -118,12 +118,14 @@ If you're working on a fresh project, this step ensures the admin system is func
 
 It create some files:
 
-- admin.py to link models with admin panel
-- models.py to contain models that represent rows of database
-- app.py to configure the app and import from django project
-- tests.py for writing tests for the application
-- views.py for the writting application endpoints or logic for various urls
-- migrations folder to store database migrations if application makes ant database changes
+admin.py to link models with admin panel
+models.py to contain models that represent rows of database
+app.py to configure the app and import from django project
+tests.py for writing tests for the application
+views.py for the writting application endpoints or logic for various urls
+migrations folder to store database migrations if application makes ant database changes
+
+- Add your app in INSTALLED_APPS array on settings.py
 
 ## Django App flow
 
@@ -161,9 +163,8 @@ UI -------------db---- navigation
 if you already know the data you're going to have,
 you can start with models
 
-## Other observations
+## After creating model, make migration and migrate
 
-- Add your app in INSTALLED_APPS array on settings.py
 - After creating models in models.py, prepare migrations file, with:
 
         poetry run python .\manage.py makemigrations
@@ -185,3 +186,11 @@ you can start with models
 - Restart server with proper command and go to admin panel
   You should be able to view your database schema and add/change data on database
   You may also see Authentication/User information
+
+## Make html templates
+
+- Make a template folder on django project root and subfolders for each app
+- Set templates folder on settings.py TEMPLATES
+  'DIRS': [BASE_DIR / 'templates'], # added templates directory
+  BASE_DIR is the root directory of project
+  APP_DIRS': True means that django will look also in apps folders
