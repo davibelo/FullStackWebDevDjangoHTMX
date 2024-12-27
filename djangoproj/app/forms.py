@@ -1,4 +1,5 @@
 from django import forms
+from app.models import Article
 
 # Example of defining a form class in forms.py manually
 # class CreateArticleForm(forms.Form):
