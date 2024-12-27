@@ -181,3 +181,7 @@ you can start with models
   'DIRS': [BASE_DIR / 'templates'], # added templates directory
   BASE_DIR is the root directory of project
   APP_DIRS': True means that django will look also in apps folders
+
+## Making forms
+
+- Create a forms.py inside app folder
