@@ -10,7 +10,7 @@ def home(request):
     # render html passing the request, template name and context
     return render(request, "app/home.html", {"articles": articles})
 
-
+# Create a class-based view for creating an article
 class ArticleCreateView(CreateView):
     template_name = "app/article_create.html"
     model = Article
