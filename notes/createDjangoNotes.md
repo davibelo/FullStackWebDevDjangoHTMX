@@ -185,3 +185,26 @@ you can start with models
 ## Making forms
 
 - Create a forms.py inside app folder
+
+See example
+
+## Cookies
+
+After a user request, a cookie is served with the http response
+If user make another request, the cookie is returned to the server,
+making the server "remember" some information about the user
+
+### CSRF Attacks
+
+CSRF (Cross-Site Request Forgery) is a web attack where a malicious site tricks a user's browser into performing unintended actions on a trusted site where they are logged in, using their session cookies.
+
+This exploits the trust the server has in the user's authenticated state. For example, an attacker could trigger a money transfer or account change without user consent.
+
+Prevention includes using CSRF tokens, SameSite cookies, validating referer/origin headers, and requiring re-authentication for sensitive actions.
+
+Implementing these measures on http POST, PUT, DELETE methods helps protect against unauthorized requests.
+
+The GET method is considered safer because it does not request changes to the server's data; it only retrieves information. However, GET requests can still be exploited in CSRF attacks if sensitive actions are improperly handled via URLs or if sensitive data is exposed in query strings. Proper validation and security measures should still be applied to all HTTP methods to ensure comprehensive protection.
+
+In django CSRF tolkens are enable by default, you just need to remember using it on forms with:
+        {% csrf_tolken %}
