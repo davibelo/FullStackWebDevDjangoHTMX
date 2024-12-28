@@ -3,8 +3,7 @@ from app.views import home, ArticleCreateView, ArticleListView, ArticleUpdateVie
 
 
 urlpatterns = [
-    path("", home, name="home"),
-    path("articles/", ArticleListView.as_view(), name="article_list"),
+    path("", ArticleListView.as_view(), name="home"),
     path("articles/create/", ArticleCreateView.as_view(), name="article_create"),    
     # int:pk integer primary key
     path("articles/<int:pk>/update/", ArticleUpdateView.as_view(), name="article_update"),
