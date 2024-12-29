@@ -264,7 +264,7 @@ OBS: When building for 2nd time, Docker will only build according to file change
 
 ### Optional test, not linking your local folder to the container
 
-- Run the container, with:
+- Create the container, with:
 
         docker run -p 8005:8000 --name djangoproj djangoproj
 
@@ -294,21 +294,27 @@ OBS: When building for 2nd time, Docker will only build according to file change
 
 ### Running container with volume using local files and database
 
-- Run the command to run the container on project folder, with:
+When using Docker for Django development, the poetry install command in the Dockerfile can overwrite critical files like migrations and the database. To prevent this and use your local files, you must mount a volume with local files and pass this to the container, as shown below:
 
-1. **Bash (Mac/Linux):**
+- Run the command to create the container on project folder, with:
 
-    docker run -p 8005:8000 --name djangoproj -v "$(pwd):/code" djangoproj
+    1. **Bash (Mac/Linux):**
 
-2. **PowerShell (Windows):**
+            docker run -p 8005:8000 --name djangoproj -v "$(pwd):/code" djangoproj
 
-    docker run -p 8005:8000 --name djangoproj -v "$(Get-Location):/code" djangoproj
+    2. **PowerShell (Windows):**
 
-3. **Git Bash (Windows):**
+            docker run -p 8005:8000 --name djangoproj -v "$(Get-Location):/code" djangoproj
 
+    3. **Git Bash (Windows):**
 
-    docker run -p 8005:8000 --name djangoproj -v "//$(pwd):/code" djangoproj
+            docker run -p 8005:8000 --name djangoproj -v "//$(pwd):/code" djangoproj
 
-4. **CMD (Windows Command Prompt):**
+    4. **CMD (Windows Command Prompt):**
 
-    docker run -p 8005:8000 --name djangoproj -v "%cd%:/code" djangoproj
+            docker run -p 8005:8000 --name djangoproj -v "%cd%:/code" djangoproj
+
+- After creating the container, it can be stopped with Ctrl+C or docker stop djangoproj.
+    It can be restarted with:
+
+        docker start djangoproj
