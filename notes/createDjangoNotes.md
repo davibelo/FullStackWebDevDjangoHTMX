@@ -208,3 +208,36 @@ The GET method is considered safer because it does not request changes to the se
 
 In django CSRF tolkens are enable by default, you just need to remember using it on forms with:
         {% csrf_tolken %}
+
+## Escape feature
+
+The Django framework includes robust built-in features for ensuring web application security, one of which is its automatic HTML escaping mechanism. This feature prevents cross-site scripting (XSS) attacks by escaping special characters in user-generated content before rendering it in templates. For example, characters like `<`, `>`, and `&` are converted to their HTML-safe equivalents (`&lt;`, `&gt;`, and `&amp;`), ensuring that any potentially harmful scripts are rendered as plain text rather than executable code. Developers can selectively bypass this behavior using the `safe` filter in Django templates, but this should only be done when the content is explicitly verified to be secure. By default, Django’s escaping functionality promotes safer web applications without requiring extensive manual intervention from developers.
+
+in views.py:
+
+    from django.shortcuts import render
+
+    def example_view(request):
+        context = {
+            "unsafe_content": "<script>alert('This is unsafe!');</script>",
+            "safe_content": "This is safe text.",
+        }
+        return render(request, "example_template.html", context)
+
+in template.html:
+
+        <!DOCTYPE html>
+        <html>
+        <head>
+            <title>HTML Escaping Example</title>
+        </head>
+        <body>
+            <h1>Escaped Content:</h1>
+            <p>{{ unsafe_content }}</p>
+
+            <h1>Unescaped Content (using safe filter):</h1>
+            <p>{{ unsafe_content|safe }}</p>
+        </body>
+        </html>
+
+## 
