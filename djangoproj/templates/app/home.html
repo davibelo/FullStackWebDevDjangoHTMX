@@ -1,17 +1,10 @@
-<!DOCTYPE html>
-<html lang="en">
-  <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Django Articles</title>
-  </head>
+{% extends 'app/base.html' %}
 
-  <body>
-    <h1>Articles</h1>
-    <ul>
-      {% for article in articles %}
-        <li>{{ article.title }} with {{ article.word_count }} words</li>
-      {% endfor %}
-    </ul>
-  </body>
-</html>
+{% block content %}
+  <h1>Articles</h1>
+  <ul>
+    {% for article in articles %}
+      <li>{{ article.title }} with {{ article.word_count }} words</li>
+    {% endfor %}
+  </ul>
+{% endblock %}
