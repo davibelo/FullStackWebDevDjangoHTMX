@@ -249,3 +249,31 @@ Filters are a powerful way to manipulate data directly in templates without modi
 Django filters reference:
 https://docs.djangoproject.com/en/5.1/ref/templates/builtins/#ref-templates-builtins-filters
 
+## Using docker
+
+- Create a Dockerfile on the workspace folder
+- Create .dockerignore file
+- Run command to build image on django project folder
+
+        docker build -t djangoproj .
+
+    -t djangoproj: The -t flag tags the image with a name. In this case, the image is tagged as djangoproj.
+    .: The dot at the end specifies the build context, which is the current directory. Docker will look for a Dockerfile in this directory to build the image.
+
+OBS: When building for 2nd time, Docker will only build according to file changes, so it will build faster
+
+- Run the container, with:
+
+        docker run -p 8005:8000 --name djangoproj djangoproj
+
+    docker run: This command runs a Docker container.
+
+    -p: This option publishes a container's port(s) to the host. It maps the host's port to a container's port.
+
+    8005:8000: 8005 is the host machine's port. When you access localhost:8005 on your host machine, it will forward the request to the container's port. 8000 is the container's port. This is the port the application inside the container is listening on (commonly used for Django apps).
+
+    --name djangoproj: it name the container djangoproj
+
+    djangoproj on the end is the docker image created before.
+
+- Run the 
