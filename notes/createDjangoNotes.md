@@ -240,4 +240,12 @@ in template.html:
         </body>
         </html>
 
-## 
+## Django Filters
+
+In Django, filters are used in templates to transform or modify the data being displayed. Filters are applied to variables in templates using the pipe (|) character. For example, {{ variable|filter_name }} applies the specified filter to variable. Django provides a wide range of built-in filters, such as lower (to convert text to lowercase), date (to format dates), default (to provide a fallback value), and safe (to mark content as safe from escaping).
+
+Filters are a powerful way to manipulate data directly in templates without modifying your views or models, helping keep logic out of the template layer. Custom filters can also be created for specific needs using Django’s @register.filter decorator. However, it’s crucial to use filters like safe carefully to avoid security risks.
+
+Django filters reference:
+https://docs.djangoproject.com/en/5.1/ref/templates/builtins/#ref-templates-builtins-filters
+
