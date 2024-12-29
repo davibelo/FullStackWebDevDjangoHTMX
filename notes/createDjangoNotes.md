@@ -262,6 +262,8 @@ https://docs.djangoproject.com/en/5.1/ref/templates/builtins/#ref-templates-buil
 
 OBS: When building for 2nd time, Docker will only build according to file changes, so it will build faster
 
+### Optional test, not linking your local folder to the container
+
 - Run the container, with:
 
         docker run -p 8005:8000 --name djangoproj djangoproj
@@ -276,4 +278,37 @@ OBS: When building for 2nd time, Docker will only build according to file change
 
     djangoproj on the end is the docker image created before.
 
-- Run the 
+- Run the a command on the running container to execute migrations and initiate database, with:
+
+        docker exec djangoproj poetry run python manage.py migrate
+
+    in this case after djangoproj is the name of the container
+
+- List all containers on machine, with:
+
+        docker ps -a
+
+- Delete the container created for the test, with:
+
+        docker rm djangoproj
+
+### Running container with volume using local files and database
+
+- Run the command to run the container on project folder, with:
+
+1. **Bash (Mac/Linux):**
+
+    docker run -p 8005:8000 --name djangoproj -v "$(pwd):/code" djangoproj
+
+2. **PowerShell (Windows):**
+
+    docker run -p 8005:8000 --name djangoproj -v "$(Get-Location):/code" djangoproj
+
+3. **Git Bash (Windows):**
+
+
+    docker run -p 8005:8000 --name djangoproj -v "//$(pwd):/code" djangoproj
+
+4. **CMD (Windows Command Prompt):**
+
+    docker run -p 8005:8000 --name djangoproj -v "%cd%:/code" djangoproj
