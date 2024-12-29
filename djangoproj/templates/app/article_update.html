@@ -2,7 +2,7 @@
 
 {% block content %}
   <h1>Edit Article</h1>
-  <p>{{ article.word_count }} word {{ article.word_count|pluralize }}</p>
+  <p>{{ article.word_count }} word{{ article.word_count|pluralize }}</p>
   </p>
   <p>Article last updated at {{ article.updated_at }}</p>
 
