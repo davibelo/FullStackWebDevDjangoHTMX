@@ -2,7 +2,7 @@
 
 {% block content %}
   <h1>Edit Article</h1>
-  <p>Article last updated at {{ article.updated_at|date:'jS F Y' }}</p>
+  <p>Article last updated at {{ article.updated_at }}</p>
   <form method="POST">
     {% csrf_token %} <!-- This line is required for security reasons -->
     {{ form.as_p }} <!-- This line will render the form fields as <p> -->
