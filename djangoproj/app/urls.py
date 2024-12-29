@@ -7,5 +7,5 @@ urlpatterns = [
     path("create/", ArticleCreateView.as_view(), name="article_create"),        
     path("<int:pk>/update/", ArticleUpdateView.as_view(), name="article_update"),
     path("<int:pk>/delete/", ArticleDeleteView.as_view(), name="article_delete"),
-    # int:pk is integer primary key
+    # int:pk is integer primary key that is genereated by Django for each article
 ]

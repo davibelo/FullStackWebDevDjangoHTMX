@@ -8,4 +8,6 @@
     {{ form.as_p }} <!-- This line will render the form fields as <p> -->
     <button type="submit">Save</button>
   </form>
+  <a href="{% url 'home' %}">Back to list</a>
+  <a href="{% url 'article_delete' article.id %}">Delete article</a>
 {% endblock %}
