@@ -7,7 +7,8 @@
     <ul>
       {% for article in articles %}
         <li>
-          <a href="{% url 'article_update' article.id %}">{{ article.title }}</a> with {{ article.word_count }} words
+          <a href="{% url 'article_update' article.id %}">{{ article.title }}</a>
+          with {{ article.word_count }} word{{ article.word_count|pluralize }}
         </li>
       {% endfor %}
     </ul>
