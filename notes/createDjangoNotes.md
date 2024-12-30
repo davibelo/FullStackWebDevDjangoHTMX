@@ -300,21 +300,23 @@ When using Docker for Django development, the poetry install command in the Dock
 
     1. **Bash (Mac/Linux):**
 
-            docker run -p 8005:8000 --name djangoproj -v "$(pwd):/code" djangoproj
+            docker run -dp 8005:8000 --name djangoproj -v "$(pwd):/code" djangoproj
 
     2. **PowerShell (Windows):**
 
-            docker run -p 8005:8000 --name djangoproj -v "$(Get-Location):/code" djangoproj
+            docker run -dp 8005:8000 --name djangoproj -v "$(Get-Location):/code" djangoproj
 
     3. **Git Bash (Windows):**
 
-            docker run -p 8005:8000 --name djangoproj -v "//$(pwd):/code" djangoproj
+            docker run -dp 8005:8000 --name djangoproj -v "//$(pwd):/code" djangoproj
 
     4. **CMD (Windows Command Prompt):**
 
-            docker run -p 8005:8000 --name djangoproj -v "%cd%:/code" djangoproj
+            docker run -dp 8005:8000 --name djangoproj -v "%cd%:/code" djangoproj
 
 - After creating the container, it can be stopped with Ctrl+C or docker stop djangoproj.
     It can be restarted with:
 
         docker start djangoproj
+
+    Container can be monitored on Docker Desktop
