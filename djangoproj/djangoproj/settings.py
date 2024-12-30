@@ -60,15 +60,11 @@ if DEBUG:
     ]
     
     import socket
-
     hostname, _, ips = socket.gethostbyname_ex(socket.gethostname())
     INTERNAL_IPS = [ip[:-1] + "1" for ip in ips] + ["127.0.0.1"]
     
-    DEBUG_TOOLBAR_CONFIG = {
-        'SHOW_TOOLBAR_CALLBACK': lambda request: print(request.META),
-    }
-    # Add docker internal IP address to INTERNAL_IPS manually if above code does not work
-    # INTERNAL_IPS += ["192.168.65.1"]
+    # Add docker internal IP address to INTERNAL_IPS manually if above does not work
+    # INTERNAL_IPS += ["172.17.0.2"]
 
 ROOT_URLCONF = 'djangoproj.urls'
 
