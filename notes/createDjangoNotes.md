@@ -347,3 +347,15 @@ When using Docker for Django development, the poetry install command in the Dock
             MIDDLEWARE += [
                 "debug_toolbar.middleware.DebugToolbarMiddleware",
             ]
+
+            INTERNAL_IPS += [
+
+            ]
+
+- Add debug toolbar in django proj urls.py
+    if settings.DEBUG:
+        urlpatterns += [
+            path("__debug__/", include("debug_toolbar.urls")),
+        ]
+
+- It is necessary to build image and run docker container again
