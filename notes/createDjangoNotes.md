@@ -87,11 +87,11 @@ To consult the order in PATH these commands can be used:
 
 - Run server with:
 
-        poetry run python .\manage.py runserver
+        poetry run python manage.py runserver
 
 - Run migrations, with:
 
-        poetry run python .\manage.py migrate
+        poetry run python manage.py migrate
 
 This command applies all built-in migrations and any migrations for your installed apps (like auth, sessions, etc.).
 
@@ -103,17 +103,17 @@ If you're working on a fresh project, this step ensures the admin system is func
 
 - Create a superuser, with:
 
-        poetry run python .\manage.py createsuperuser
+        poetry run python manage.py createsuperuser
 
 - Run server, with:
 
-        poetry run python .\manage.py runserver
+        poetry run python manage.py runserver
 
 - Go to server url/admin (http://127.0.0.1:8000/admin) on browser and log on admin panel of django
 
 - Create a django app, with:
 
-        poetry run python .\manage.py startapp app
+        poetry run python manage.py startapp app
 
 It create some files:
 
@@ -154,21 +154,21 @@ you can start with models
 
 - After creating models in models.py, prepare migrations file, with:
 
-        poetry run python .\manage.py makemigrations
+        poetry run python manage.py makemigrations
 
   It create a migration file to initialize the database
   It will create a database file according to DATABASE in settings.py
 
 - Apply migration file with:
 
-        poetry run python .\manage.py migrate
+        poetry run python manage.py migrate
 
   Remember that it will create a new database file,
   if it already exists, delete it first
 
 - Database will be recreated, so it is need to create super user, with:
 
-        poetry run python .\manage.py createsuperuser
+        poetry run python manage.py createsuperuser
 
 - Restart server with proper command and go to admin panel
   You should be able to view your database schema and add/change data on database
@@ -270,7 +270,7 @@ OBS: When building for 2nd time, Docker will only build according to file change
 
     docker run: This command runs a Docker container.
 
-    -p: This option publishes a container's port(s) to the host. It maps the host's port to a container's port.
+    -dp: This option runs as daemon and publishes a container's port(s) to the host. It maps the host's port to a container's port.
 
     8005:8000: 8005 is the host machine's port. When you access localhost:8005 on your host machine, it will forward the request to the container's port. 8000 is the container's port. This is the port the application inside the container is listening on (commonly used for Django apps).
 
@@ -363,3 +363,17 @@ When using Docker for Django development, the poetry install command in the Dock
 OBS: When building production image, change poetry install step to:
 
         poetry install --only main
+
+## Create one custom migration
+
+For example, if you want to automate the process of create a superuser, create a empty migration on your django app with:
+
+        poetry run python manage.py makemigrations --empty app
+
+It will create a empty custom migration on migration folder, you can rename it and change code to:
+
+To apply all migrations run:
+
+        poetry run python manage.py migrate
+
+
