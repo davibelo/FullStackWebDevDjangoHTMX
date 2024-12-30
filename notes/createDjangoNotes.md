@@ -320,3 +320,30 @@ When using Docker for Django development, the poetry install command in the Dock
         docker start djangoproj
 
     Container can be monitored on Docker Desktop
+
+## Django debug toolbar
+
+- Install django debug toolbar, with:
+
+        poetry add -G dev django-debug-toolbar
+
+    - poetry add: This command adds a dependency to your project using Poetry, a Python dependency management tool.
+    - -G dev: This flag specifies that the dependency should be added to the dev dependency group (used only in development, not in production).
+    - django-debug-toolbar: The package name for the Django Debug Toolbar.
+
+    The Django Debug Toolbar package is added to your project's pyproject.toml file under the [tool.poetry.group.dev.dependencies] section.
+
+    It will be available only in development environments when installed.
+
+    After installing the package, you need to configure it in your Django project:
+
+- Enable it on settings.py in debug mode:
+
+        if DEBUG:
+            INSTALLED_APPS += [
+                "debug_toolbar",
+            ]
+
+            MIDDLEWARE += [
+                "debug_toolbar.middleware.DebugToolbarMiddleware",
+            ]
