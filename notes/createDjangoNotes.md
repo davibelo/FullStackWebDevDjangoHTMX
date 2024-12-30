@@ -359,3 +359,7 @@ When using Docker for Django development, the poetry install command in the Dock
         ]
 
 - It is necessary to build image and run docker container again
+
+OBS: When building production image, change poetry install step to:
+
+        poetry install --only main
