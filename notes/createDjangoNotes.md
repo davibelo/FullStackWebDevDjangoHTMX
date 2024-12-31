@@ -364,7 +364,7 @@ OBS: When building production image, change poetry install step to:
 
         poetry install --only main
 
-## Create one custom migration
+## Create a custom migration
 
 For example, if you want to automate the process of create a superuser, create a empty migration on your django app with:
 
@@ -376,4 +376,7 @@ To apply all migrations run:
 
         poetry run python manage.py migrate
 
+## Create a migration to set an user default in case that user was not in database prior to the user integration
 
+In models.py a foreign key is created on main table (articles) to relate it to users table
+After that, it is necessary to execute makemigration and migrate commands again to make it happen on database
