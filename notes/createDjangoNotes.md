@@ -380,3 +380,5 @@ To apply all migrations run:
 
 In models.py a foreign key is created on main table (articles) to relate it to users table
 After that, it is necessary to execute makemigration and migrate commands again to make it happen on database
+
+
