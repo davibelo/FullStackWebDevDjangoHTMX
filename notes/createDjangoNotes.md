@@ -381,4 +381,13 @@ To apply all migrations run:
 In models.py a foreign key is created on main table (articles) to relate it to users table
 After that, it is necessary to execute makemigration and migrate commands again to make it happen on database
 
+## Create a login page with django
 
+Django has a template to make the login page
+
+- Change urls.py on django project adding:
+
+        path("accounts/", include("django.contrib.auth.urls"))
+
+- Create the templates according to django requirements:
+    On templates folder, create a registration/login.html
