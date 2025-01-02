@@ -20,6 +20,8 @@ from django.urls import path, include
 urlpatterns = [
     path('admin/', admin.site.urls),
     path("articles/", include("app.urls")),
-    path("accounts/", include("django.contrib.auth.urls")),
+    # login, logout, password_change, password_reset, password_reset_done, 
+    # password_reset_confirm, password_reset_complete urls
+    path("accounts/", include("django.contrib.auth.urls")), 
     path("__debug__/", include("debug_toolbar.urls")),
 ]

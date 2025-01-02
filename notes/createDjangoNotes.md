@@ -391,3 +391,13 @@ Django has a template to make the login page
 
 - Create the templates according to django requirements:
     On templates folder, create a registration/login.html
+    Create a form on this page and that´s it.
+
+- Logout post request can be handled writing a form with url logout, even logout template does not exists. It is handled by django
+
+        <form method="POST" action="{% url 'logout' %}">
+            {% csrf_token %}
+            <button type="submit">Log out</button>
+        </form>
+
+- 
