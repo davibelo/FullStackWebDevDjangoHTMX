@@ -384,6 +384,8 @@ After that, it is necessary to execute makemigration and migrate commands again 
 ## Create a login page with django
 
 Django has a template to make the login page
+Futher information:
+https://docs.djangoproject.com/en/5.1/topics/auth/default/#module-django.contrib.auth.views
 
 - Change urls.py on django project adding:
 
@@ -400,4 +402,8 @@ Django has a template to make the login page
             <button type="submit">Log out</button>
         </form>
 
-- 
+- On settings.py write the urls to redirect when login or logout
+    LOGIN_REDIRECT_URL = "home" # redirect to home page after login
+    LOGOUT_REDIRECT_URL = "login"  # redirect to login page after logout
+
+- views.py use LoginRequiredMixin, UserPassesTestMixin classes on the views to add extra features to them
