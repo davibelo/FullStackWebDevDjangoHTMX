@@ -407,3 +407,66 @@ https://docs.djangoproject.com/en/5.1/topics/auth/default/#module-django.contrib
     LOGOUT_REDIRECT_URL = "login"  # redirect to login page after logout
 
 - views.py use LoginRequiredMixin, UserPassesTestMixin classes on the views to add extra features to them
+
+## Adding django allauth login feature
+
+- On project folder add allauth package with:
+
+        poetry add "django-allauth[socialaccount]"
+
+- On project settings.py add allauth apps
+
+AUTHENTICATION_BACKENDS = [
+    "allauth.account.auth_backends.AuthenticationBackend"
+]
+
+        # Application definition
+
+        DJANGO_APPS = [
+            "django.contrib.admin",
+            "django.contrib.auth",
+            "django.contrib.contenttypes",
+            "django.contrib.sessions",
+            "django.contrib.messages",
+            "django.contrib.staticfiles",
+        ]
+
+        THIRD_PARTY_APPS = [
+            "allauth",
+            "allauth.account",
+        ]
+
+        PROJECT_APPS = [
+            "app.apps.AppConfig",
+        ]
+
+        INSTALLED_APPS = DJANGO_APPS + THIRD_PARTY_APPS + PROJECT_APPS
+
+        MIDDLEWARE = [
+            'django.middleware.security.SecurityMiddleware',
+            'django.contrib.sessions.middleware.SessionMiddleware',
+            'django.middleware.common.CommonMiddleware',
+            'django.middleware.csrf.CsrfViewMiddleware',
+            'django.contrib.auth.middleware.AuthenticationMiddleware',
+            'django.contrib.messages.middleware.MessageMiddleware',
+            'django.middleware.clickjacking.XFrameOptionsMiddleware',
+            'allauth.account.middleware.AccountMiddleware',
+        ]
+
+        LOGIN_REDIRECT_URL = "home" # redirect to home page after login
+        LOGOUT_REDIRECT_URL = "account_login"  # redirect to login page after logout
+
+- On project urls.py, replace login urls for:
+
+        path("accounts/", include("allauth.urls"))
+        path("", RedirectView.as_view(pattern_name="home")),
+
+- On html templates use:
+        {% url 'account_login' %}
+        {% url 'account_logout' %}
+
+- Delete registration folder with login template
+
+- Run migrations allauth brings, with:
+
+        poetry run python manage.py migrate
