@@ -470,3 +470,27 @@ AUTHENTICATION_BACKENDS = [
 - Run migrations allauth brings, with:
 
         poetry run python manage.py migrate
+
+## Adding login with social accounts
+
+- On project settings.py change this section to:
+
+        THIRD_PARTY_APPS = [
+            "allauth",
+            "allauth.account",
+            "allauth.socialaccount",
+            "allauth.socialaccount.providers.github",
+        ]
+
+- Run migrations allauth brings, with:
+
+        poetry run python manage.py migrate
+
+- Create an oauth application on github and get client ID and client secret
+
+- Go to django admin panel, click on Social Accounts, Social applications, click add social application, use githun client id and secret and save. Users logged with social account can be consulted on admin panel at Social Accounts, Social Accounts menu.
+
+Futherinformation can be found on: https://docs.allauth.org/en/latest/
+
+
+
