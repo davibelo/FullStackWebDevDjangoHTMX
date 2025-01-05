@@ -492,5 +492,15 @@ AUTHENTICATION_BACKENDS = [
 
 Futherinformation can be found on: https://docs.allauth.org/en/latest/
 
+- On project settings.py, change email to be a required field
 
+        # Allauth settings
+        ACCOUNT_AUTHENTICATION_METHOD = "email"
+        ACCOUNT_UNIQUE_EMAIL = True
+        ACCOUNT_EMAIL_REQUIRED = True
+        ACCOUNT_USERNAME_REQUIRED = False
+        ACCOUNT_EMAIL_VERIFICATION = "none"
 
+After this, to login on admin panel, use email, username will not work
+
+- Customize user views on admin panel, on admin.py
