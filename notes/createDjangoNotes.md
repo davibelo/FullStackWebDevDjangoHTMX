@@ -504,3 +504,67 @@ Futherinformation can be found on: https://docs.allauth.org/en/latest/
 After this, to login on admin panel, use email, username will not work
 
 - Customize user views on admin panel, on admin.py
+
+## Using translation on django
+
+- Add gettext package install on docker
+
+        RUN apt update
+        RUN apt install gettext -y
+
+- Create a folder on root of django project called locale
+
+- On settings.py change LANGUAGE_CODE to the desired language:
+
+        LANGUAGE_CODE = "pt-br"
+
+- Add on settings.py locale folder path:
+
+        LOCALE_PATHS = [BASE_DIR / "locale"]
+
+- Use gettext_lazy method and verbose_name argument to set the text to be translated automatically
+
+        from django.utils.translation import gettext_lazy as _
+
+        class Article(models.Model):
+            class Meta:
+                verbose_name = _("article")
+                verbose_name_plural = _("articles")
+
+            title = models.CharField(verbose_name=_("title"), max_length=100)
+
+- Test related migrations
+
+        docker exec djangoproj poetry run python manage.py makemigrations
+        docker exec djangoproj poetry run python manage.py migrate
+
+- Rebuild the docker image and run the container again
+
+- Generate translation files, with:
+
+        docker exec djangoproj poetry run python manage.py makemessages --local=pt_BR
+
+    OBS: Diferences between settings.py and makemessage command:
+
+    Django uses language codes in lowercase for the LANGUAGE_CODE setting, following ISO 639-1 standards (e.g., en-us, pt-br).
+    Translation directories and makemessages:
+
+    The makemessages command and the filesystem use locale codes with uppercase for the region part (e.g., pt_BR, en_US), following POSIX locale standards.
+
+- Go to generated .po file and write the translations inside corresponding msgstr strings:
+
+        msgid "title"
+        msgstr "título"
+
+- Compile .po translation files, with:
+
+        docker exec djangoproj poetry run python manage.py compilemessages
+
+    A .po binary file will be generated on locale folder
+
+- Restart the docker container
+
+OBS: there are more necessary things to translate to the website be completely translated, but example above is enough to understand the basics
+
+##
+

@@ -2,6 +2,7 @@ import re
 from django.db import models
 from django.conf import settings
 from django.contrib.auth.models import AbstractUser
+from django.utils.translation import gettext_lazy as _
 
 # Create your models here.
 
@@ -11,24 +12,40 @@ ARTICLE_STATUS = (
     ("published", "published"),
 )
 
+
 class UserProfile(AbstractUser):
     pass
 
+
 class Article(models.Model):
-    title = models.CharField(max_length=100)
-    content = models.TextField(blank=True, default="")
-    word_count = models.IntegerField(blank=True, default=0)  # Set default value to 0
-    twitter_post = models.TextField(blank=True, default="")
+    class Meta:
+        verbose_name = _("article")
+        verbose_name_plural = _("articles")
+
+    title = models.CharField(verbose_name=_("title"), max_length=100)
+    content = models.TextField(verbose_name=_("content"), blank=True, default="")
+    word_count = models.IntegerField(
+        verbose_name=_("word count"), blank=True, default=0
+    )  # Set default value to 0
+    twitter_post = models.TextField(
+        verbose_name=_("twitter post"), blank=True, default=""
+    )
     status = models.CharField(
+        verbose_name=_("status"),
         max_length=20,
         choices=ARTICLE_STATUS,
         default=ARTICLE_STATUS[0][0],
     )
-    created_at = models.DateTimeField(auto_now_add=True)
-    updated_at = models.DateTimeField(auto_now=True)
-    creator = models.ForeignKey(settings.AUTH_USER_MODEL, on_delete=models.CASCADE, related_name="articles")        
+    created_at = models.DateTimeField(verbose_name=_("created at"), auto_now_add=True)
+    updated_at = models.DateTimeField(verbose_name=_("updated at"), auto_now=True)
+    creator = models.ForeignKey(
+        settings.AUTH_USER_MODEL,
+        verbose_name="creator",
+        on_delete=models.CASCADE,
+        related_name="articles",
+    )
 
-    def save(self, *args, **kwargs):  
+    def save(self, *args, **kwargs):
         # Remove all HTML tags from the content using a regex pattern.
         # The pattern "<[^>]*>" matches any substring that starts with "<",
         # followed by zero or more characters that are not ">", and ends with ">".
@@ -51,5 +68,3 @@ class Article(models.Model):
         # This ensures that any additional processing defined in the parent class
         # is also executed when saving the object.
         super().save(*args, **kwargs)
-
-
