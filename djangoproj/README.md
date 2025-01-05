@@ -1,1 +1,3 @@
+# READ ME
+
 This is a basic Django project that uses Docker and Poetry.
