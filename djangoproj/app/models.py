@@ -3,6 +3,7 @@ from django.db import models
 from django.conf import settings
 from django.contrib.auth.models import AbstractUser
 from django.utils.translation import gettext_lazy as _
+from app.managers import UserProfileManager
 
 # Create your models here.
 
@@ -12,10 +13,15 @@ ARTICLE_STATUS = (
     ("published", "published"),
 )
 
-
 class UserProfile(AbstractUser):
-    pass
-
+    # Add additional fields to the default User model
+    email = models.EmailField(_("email address"), max_length=255, unique=True)
+    # Add a custom manager to the model
+    objects = UserProfileManager()
+    # Set the email field as the unique identifier for the user
+    USERNAME_FIELD = "email"
+    # Define the fields required when creating a user
+    REQUIRED_FIELDS = []
 
 class Article(models.Model):
     class Meta:

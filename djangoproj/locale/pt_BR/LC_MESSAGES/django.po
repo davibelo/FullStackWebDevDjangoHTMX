@@ -2,13 +2,13 @@
 # Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
 # This file is distributed under the same license as the PACKAGE package.
 # FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
-#
+# 
 #, fuzzy
 msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2025-01-05 14:16-0300\n"
+"POT-Creation-Date: 2025-01-05 18:40-0300\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -18,38 +18,54 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=(n > 1);\n"
 
-#: app/models.py:22
+#: app/managers.py:7
+msgid "The Email must be set"
+msgstr "O email deve ser informado"
+
+#: app/managers.py:19
+msgid "Superuser must have is_staff=True"
+msgstr "O superusuário deve ter is_staff=True"
+
+#: app/managers.py:21
+msgid "Superuser must have is_superuser=True"
+msgstr "O superusuário deve ter is_superuser=True"
+
+#: app/models.py:17
+msgid "email address"
+msgstr "endereço de e-mail"
+
+#: app/models.py:24
 msgid "article"
 msgstr "artigo"
 
-#: app/models.py:23
+#: app/models.py:25
 msgid "articles"
 msgstr "artigos"
 
-#: app/models.py:25
+#: app/models.py:27
 msgid "title"
 msgstr "título"
 
-#: app/models.py:26
+#: app/models.py:28
 msgid "content"
 msgstr "conteúdo"
 
-#: app/models.py:28
+#: app/models.py:30
 msgid "word count"
 msgstr "contagem de palavras"
 
-#: app/models.py:31
+#: app/models.py:33
 msgid "twitter post"
 msgstr "postagem no Twitter"
 
-#: app/models.py:34
+#: app/models.py:36
 msgid "status"
 msgstr "status"
 
-#: app/models.py:39
+#: app/models.py:41
 msgid "created at"
 msgstr "criado em"
 
-#: app/models.py:40
+#: app/models.py:42
 msgid "updated at"
 msgstr "atualizado em"

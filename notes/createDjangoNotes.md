@@ -566,5 +566,10 @@ After this, to login on admin panel, use email, username will not work
 
 OBS: there are more necessary things to translate to the website be completely translated, but example above is enough to understand the basics
 
-##
+## Customizing User Model
+
+- Create a managers.py and modify the user class
+- Import managers.py on models.py and use modified class
+
+
 
